@@ -57,12 +57,11 @@ public class Robot extends TimedRobot
     public void teleopPeriodic() 
     {
         Scheduler.getInstance().run();
-        test.set(ControlMode.PercentOutput, 1);
     }
 
     @Override
-    public void testPeriodic() 
+    public void testPeriodic()
     {
-        
+
     }
 }

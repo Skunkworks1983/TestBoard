@@ -21,8 +21,8 @@ public class Board extends Subsystem
 
     public void initDefaultCommand()
     {
-        motor1 = new Motor(Constants.MOTOR1_PORT, false, true);
-        motor2 = new Motor(Constants.MOTOR2_PORT, false, true);
+        motor1 = new Motor(Constants.MOTOR1_PORT, false, Constants.EncoderType.TALON, Constants.MOTOR1_ENCODER_RESOLUTION);
+        motor2 = new Motor(Constants.MOTOR2_PORT, false, Constants.MOTOR2_ENCODER_RESOLUTION, Constants.MOTOR2_ENCODER_PORT1, Constants.MOTOR2_ENCODER_PORT2);
         navX = new NavX();
 
         pSoC = new PSoC(SPI.Port.kOnboardCS0);
@@ -46,12 +46,12 @@ public class Board extends Subsystem
 
     public double getMotor1Rotation()
     {
-        return motor1.getSelectedSensorPosition(0)/* / Constants.ENCODER_RESOLUTION*/;
+        return motor1.getRotations();
     }
 
     public double getMotor2Rotation()
     {
-        return motor2.getSelectedSensorPosition(0)/* / Constants.ENCODER_RESOLUTION*/;
+        return motor2.getRotations();
     }
 
     public void resetEncoders()
